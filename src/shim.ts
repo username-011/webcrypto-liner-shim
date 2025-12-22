@@ -11,6 +11,7 @@ if (nativeCrypto) {
 try {
   // Replace original crypto by liner if needed
   if (window) {
+    console.log("Liner runtime: checking crypto...");
     if (window.crypto === "undefined" || window.crypto.subtle === undefined) {
       delete (self as any).crypto;
       window.crypto = new Crypto();
