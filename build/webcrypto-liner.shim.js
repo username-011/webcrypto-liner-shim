@@ -24391,7 +24391,7 @@ var liner = function (exports) {
     Object.freeze(exports.nativeCrypto.getRandomValues);
   }
   try {
-    if (window$1 && !(self.crypto && self.crypto.subtle)) {
+    if (window$1 && !(window$1.crypto && window$1.crypto.subtle)) {
       delete self.crypto;
       window$1.crypto = new Crypto();
       Object.freeze(window$1.crypto);

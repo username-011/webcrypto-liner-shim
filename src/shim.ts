@@ -2,7 +2,7 @@ import { Crypto, nativeCrypto } from ".";
 import { Debug } from "./debug";
 import "./init";
 
-const window = typeof self === "undefined" ? undefined : self as any;
+const window = typeof self === "undefined" ? undefined : (self as any);
 
 if (nativeCrypto) {
   Object.freeze(nativeCrypto.getRandomValues);
@@ -10,7 +10,7 @@ if (nativeCrypto) {
 
 try {
   // Replace original crypto by liner if needed
-  if (window && !(self.crypto && self.crypto.subtle)) {
+  if (window && !(window.crypto && window.crypto.subtle)) {
     delete (self as any).crypto;
     window.crypto = new Crypto();
     Object.freeze(window.crypto);
