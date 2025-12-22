@@ -24391,15 +24391,17 @@ var liner = function (exports) {
     Object.freeze(exports.nativeCrypto.getRandomValues);
   }
   try {
-    if (window$1 && !(window$1.crypto && window$1.crypto.subtle)) {
-      delete self.crypto;
-      window$1.crypto = new Crypto();
-      Object.freeze(window$1.crypto);
+    if (window$1) {
+      if (window$1.crypto === "undefined" || window$1.crypto.subtle === undefined) {
+        delete self.crypto;
+        window$1.crypto = new Crypto();
+        Object.freeze(window$1.crypto);
+      }
     }
   } catch (e) {
     Debug.error(e);
   }
-  const crypto = typeof window$1 !== "undefined" ? window$1.crypto : undefined;
+  const crypto = window$1 === null || window$1 === void 0 ? void 0 : window$1.crypto;
   exports.Crypto = Crypto;
   exports.CryptoKey = CryptoKey;
   exports.crypto = crypto;
