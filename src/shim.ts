@@ -19,5 +19,5 @@ try {
   Debug.error(e);
 }
 
-export const crypto = window.crypto;
+export const crypto = typeof window !== "undefined" ? window.crypto : undefined;
 export * from ".";

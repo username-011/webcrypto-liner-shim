@@ -24399,7 +24399,7 @@ var liner = function (exports) {
   } catch (e) {
     Debug.error(e);
   }
-  const crypto = window$1.crypto;
+  const crypto = typeof window$1 !== "undefined" ? window$1.crypto : undefined;
   exports.Crypto = Crypto;
   exports.CryptoKey = CryptoKey;
   exports.crypto = crypto;
