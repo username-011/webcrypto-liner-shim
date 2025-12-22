@@ -24392,11 +24392,14 @@ var liner = function (exports) {
   }
   try {
     if (window$1) {
-      console.log("Liner runtime: checking crypto...");
+      console.log("[webcrypto-liner] Checking crypto...");
       if (window$1.crypto === "undefined" || window$1.crypto.subtle === undefined) {
+        console.log("[webcrypto-liner] Native crypto is not available. Using webcrypto-liner shim.");
         delete self.crypto;
         window$1.crypto = new Crypto();
         Object.freeze(window$1.crypto);
+      } else {
+        console.log("[webcrypto-liner] Native crypto is available.");
       }
     }
   } catch (e) {
