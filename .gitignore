@@ -6,7 +6,6 @@
 .nyc_output/
 coverage/
 
-/build
 /typings
 /node_modules
 index.js
