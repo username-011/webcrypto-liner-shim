@@ -12,7 +12,7 @@ try {
   // Replace original crypto by liner if needed
   if (window) {
     console.log("[webcrypto-liner] Checking crypto...");
-    if (window.crypto === "undefined" || window.crypto.subtle === undefined) {
+    if (window.crypto === undefined || window.crypto.subtle === undefined) {
       console.log(
         "[webcrypto-liner] Native crypto is not available. Using webcrypto-liner shim."
       );
